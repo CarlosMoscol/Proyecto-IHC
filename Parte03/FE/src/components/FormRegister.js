@@ -26,6 +26,16 @@ export default function FormRegister() {
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" className="form-label">
+          Nombre
+        </label>
+        <input
+          type="name"
+          className="form-control"
+          id="exampleName1"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" className="form-label">
           Email
         </label>
         <input
