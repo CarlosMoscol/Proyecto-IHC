@@ -20,62 +20,67 @@ export default function AdquirirPaquete() {
         <div className="row">
           <div className="col">
             <div className=" card-body">
-              <h5>Detalles</h5>
+              
               <div className="col">
-                <div style={styles.calificacion}>
-                  <i className="material-icons">star</i>
-                  <span>4.5 (122 compras)</span>
-                </div>
-                <ul>
-                  <li>Conoce Machu Picchu, Plaza de armas y Saqsaywaman</li>
-                  <li>Tendra un dia en el Hotel exótico-Skylodge</li>
-                  <li>Incluye transporte</li>
-                  <li>Incluye desayuno y cena en los alojamientos</li>
-                  <li>
-                    Incluye wifi <i className="material-icons">wifi</i>
-                  </li>
+                <div className="col" style={styles.detail}>
+                  <h5>Detalles</h5>
+                  <div style={styles.calificacion}>
+                    <i className="material-icons">star</i>
+                    <span>4.5 (122 compras)</span>
+                  </div>
+                  <ul>
+                    <li>Conoce Machu Picchu, Plaza de armas y Saqsaywaman</li>
+                    <li>Tendra un dia en el Hotel exótico-Skylodge</li>
+                    <li>Incluye transporte</li>
+                    <li>Incluye desayuno y cena en los alojamientos</li>
+                    <li>
+                      Incluye wifi <i className="material-icons">wifi</i>
+                    </li>
 
-                  <b style={{ fontSize: "30px" }}>$250</b>
-                </ul>
-                <h5>Ruta</h5>
-                <ol>
-                  <li style={styles.itemRurta}>
-                    LIMA-CUSCO, molibus-clasico :<br />
-                    Hora salida: 7pm “01/02/03” Hora de llegada: 11am “02/02/03”
-                  </li>
-                  <li style={styles.itemRurta}>
-                    Recorrido de la ciudad de cusco, (Hotel “cusquito”:253) :
-                    <br />
-                    Inicio: 1pm “03/02/03” Finaliza: 6pm “03/02/03”
-                  </li>
-                  <li style={styles.itemRurta}>
-                    Visita a la ciudadela de saqsaywaman (Bus-clasico:Imperial)
-                    :
-                    <br />
-                    Inicio: 9pm “04/02/03” Finaliza: 5pm “04/02/03”
-                  </li>
-                  <li style={styles.itemRurta}>
-                    Visita a la ciudadela de saqsaywaman (Bus-clasico:Imperial):
-                    <br />
-                    Inicio: 9pm “05/02/03” Finaliza: 5pm “05/02/03”
-                  </li>
-                  <li style={styles.itemRurta}>
-                    Hotel Skylodge: <br />
-                    Inicio: 6pm “05/02/03” Finaliza: 5pm “06/02/03”(regreso a
-                    cusco/bus:imperial/hotel:La cabaña 25)
-                  </li>
-                  <li style={styles.itemRurta}>
-                    Visita a la ciudadela de Machu Picchu
-                    (Bus-clasico:Imperial):
-                    <br />
-                    Inicio: 9pm “07/02/03” Finaliza: 5pm “07/02/03”
-                  </li>
-                  <li style={styles.itemRurta}>
-                    Regreso a Cusco-Lima (Bus-clasico:Imperial):
-                    <br />
-                    Inicio: 09pm “07/02/03” Finaliza: 13pm “08/02/03”
-                  </li>
-                </ol>
+                    <b style={{ fontSize: "30px" }}>$250</b>
+                  </ul>
+                </div>
+                <div className="col" style={styles.detail}>
+                  <h5>Ruta</h5>
+                  <ol>
+                    <li style={styles.itemRurta}>
+                      LIMA-CUSCO, molibus-clasico :<br />
+                      Hora salida: 7pm “01/02/03” Hora de llegada: 11am “02/02/03”
+                    </li>
+                    <li style={styles.itemRurta}>
+                      Recorrido de la ciudad de cusco, (Hotel “cusquito”:253) :
+                      <br />
+                      Inicio: 1pm “03/02/03” Finaliza: 6pm “03/02/03”
+                    </li>
+                    <li style={styles.itemRurta}>
+                      Visita a la ciudadela de saqsaywaman (Bus-clasico:Imperial)
+                      :
+                      <br />
+                      Inicio: 9pm “04/02/03” Finaliza: 5pm “04/02/03”
+                    </li>
+                    <li style={styles.itemRurta}>
+                      Visita a la ciudadela de saqsaywaman (Bus-clasico:Imperial):
+                      <br />
+                      Inicio: 9pm “05/02/03” Finaliza: 5pm “05/02/03”
+                    </li>
+                    <li style={styles.itemRurta}>
+                      Hotel Skylodge: <br />
+                      Inicio: 6pm “05/02/03” Finaliza: 5pm “06/02/03”(regreso a
+                      cusco/bus:imperial/hotel:La cabaña 25)
+                    </li>
+                    <li style={styles.itemRurta}>
+                      Visita a la ciudadela de Machu Picchu
+                      (Bus-clasico:Imperial):
+                      <br />
+                      Inicio: 9pm “07/02/03” Finaliza: 5pm “07/02/03”
+                    </li>
+                    <li style={styles.itemRurta}>
+                      Regreso a Cusco-Lima (Bus-clasico:Imperial):
+                      <br />
+                      Inicio: 09pm “07/02/03” Finaliza: 13pm “08/02/03”
+                    </li>
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
@@ -146,4 +151,11 @@ const styles = {
   colap: {
     zIndex: "-1",
   },
+  detail: {
+    backgroundColor: "rgba(87, 105, 117, 0.9)",
+    borderRadius: "10px",
+    color: "white",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.3)",
+    marginBottom: "10px",
+  }
 };

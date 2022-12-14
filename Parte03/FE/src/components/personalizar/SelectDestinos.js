@@ -16,6 +16,7 @@ export default function SelectDestinos() {
           flexWrap: "wrap",
           justifyContent: "space-around",
           alignItems: "center",
+          color: "white",
         }}
       >
         <Destinos image={puno} name="Puno" cost="50" />

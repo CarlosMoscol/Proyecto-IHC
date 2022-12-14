@@ -2,8 +2,8 @@ export default function Destinos(props) {
   return (
     <div style={style.cart}>
       <img style={style.img} src={props.image} alt="puno" />
-      <div style={style.letter}>{props.name}</div>
-      <div style={style.letter}>Precio: ${props.cost}</div>
+      <div>{props.name}</div>
+      <div>Precio: ${props.cost}</div>
     </div>
   );
 }
@@ -23,9 +23,5 @@ const style = {
     backgroundSize: "contain",
     borderRadius: "25px 25px 0 0",
     width: "100%",
-  },
-  letter: {
-    textAlign: "center",
-    color: "white",
   },
 };

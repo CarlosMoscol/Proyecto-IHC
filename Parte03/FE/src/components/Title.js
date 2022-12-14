@@ -4,7 +4,7 @@ export default function Title(props) {
   return (
     <h2
       style={{
-        borderBottom: "2px dotted rgb(146, 79, 160)",
+        borderBottom: "2px dotted #2C3949",
         fontWeight: "lighter",
       }}
     >
