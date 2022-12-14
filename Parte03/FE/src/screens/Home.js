@@ -33,6 +33,6 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "15% 0",
+    padding: "25% 0",
   },
 };

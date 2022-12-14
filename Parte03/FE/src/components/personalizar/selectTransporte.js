@@ -10,10 +10,12 @@ export default function selectTransporte() {
       <div
         className="container-fluid"
         style={{
+          fontStyle: "Italic",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-around",
           alignItems: "center",
+          color: "white",
         }}
       >
         <Transporte image={imperial} name="Imperial" cost="90" />

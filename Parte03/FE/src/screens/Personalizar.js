@@ -19,7 +19,7 @@ export default function Personalizar() {
         <SelectRegion />
       </section>
       <section>
-        <Title title="Selecciona lugar turistico" />
+        <Title title="Selecciona Lugar turistico" />
         <SelectDestino />
       </section>
       <section>
@@ -50,7 +50,10 @@ export default function Personalizar() {
 
 const styles = {
   detailCreation: {
+    textAlign: "center",
     color: "white",
-    backgroundColor: "rgb(144, 66, 163)",
+    backgroundColor: "#091F31",
+    fontSize: "20px",
+    borderRadius: "20px",
   },
 };

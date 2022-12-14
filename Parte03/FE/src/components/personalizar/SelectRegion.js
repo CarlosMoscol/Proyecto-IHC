@@ -52,16 +52,20 @@ const styles = {
     with: "100px",
     boxShadow:
       "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-    backgroundColor: "white",
+    backgroundColor: "#2C3949",
     borderRadius: "15px",
-    width: "200px",
+    width: "250px",
+    padding: "10px",
   },
   imgRegion: {
     width: "100%",
     backgroundZise: "contain",
-    borderRadius: "15px 15px 0 0",
+    borderRadius: "15px 15px 0 0 ",
+    padding: "5px 0",
   },
   imgTitle: {
+    fontStyle: "italic",
     textAlign: "center",
+    color: "white",
   },
 };

@@ -6,12 +6,12 @@ import Title from "./Title";
 export default function Buscar() {
   return (
     <div style={styles.contentFormBuscar}>
-      <Title title="Buscar" />
+      <Title title="Encuentra la mejor opción para tu viaje." />
       <form className="container-fluid" style={styles.formBuscar}>
         <div className="row p-3">
           <div className="col-md">
             <label>
-              <img src={maletaIcon} alt="icon" style={{ width: "30px" }} /> Tipo
+              <img src={maletaIcon} alt="icon" style={{ width: "20px" }} /> Tipo
             </label>
             <input class="form-control" list="tipos" name="tipo" id="tipo" />
             <datalist id="tipos">
@@ -25,7 +25,7 @@ export default function Buscar() {
           <div className="col-md">
             <label>
               {" "}
-              <img src={miUbicacionIcon} alt="icon" style={{ width: "20px" }} />
+              <img src={miUbicacionIcon} alt="icon" style={{ width: "15px" }} />
               Estoy aquí
             </label>
             <input
@@ -43,7 +43,7 @@ export default function Buscar() {
             </datalist>
           </div>
           <div className="col-md">
-            <label>Fecha de início</label>
+            <label>Fecha de inicio</label>
             <input class="form-control" type="date" />
           </div>
           <div className="col-md">
@@ -68,12 +68,14 @@ export default function Buscar() {
 
 const styles = {
   contentFormBuscar: {
-    backgroundColor: "white",
-    padding: "10px",
+    color: "white",
+    fontStyle: "italic",
+    backgroundColor: "rgba(87, 105, 117, 0.8)",
+    padding: "15px",
     borderRadius: "15px",
   },
 
-  formBuscar: {
+  formBuscar: {  
     display: "flex",
     flexDirection: "row",
     alignItems: "center",

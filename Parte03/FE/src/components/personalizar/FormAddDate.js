@@ -51,6 +51,7 @@ export default function FormAddDate() {
 
 const styles = {
   form: {
+    fontStyle: "italic",
     backgroundColor: "white",
   },
 };

@@ -17,6 +17,8 @@ const style = {
     width: "250px",
     textAlign: "center",
     margin: "10px",
+    padding: "10px",
+    backgroundColor: "#2C3949",
   },
   img: {
     backgroundSize: "contain",

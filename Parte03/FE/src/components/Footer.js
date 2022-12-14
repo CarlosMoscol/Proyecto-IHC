@@ -12,21 +12,21 @@ export default function Footer() {
         </div>
         <div className="col">
           <h5>Servicios</h5>
-          <ul>
+          <ul style={{listStyle:"none"}}>
             <li>Paquetes de viaje</li>
             <li>Promoción de servicios turisticos</li>
           </ul>
         </div>
         <div className="col">
           <h5>Soporte</h5>
-          <ul>
+          <ul style={{listStyle:"none"}}>
             <li>Telefono: xxx-xxx-xxx</li>
-            <li>Email: xxxx@example.com</li>
+            <li>Email: inkatravel@uni.com</li>
           </ul>
         </div>
       </div>
       <div className="row">
-        <div className="col p-5">Copy Right InkaTravel S. A.</div>
+        <div className="col p-5">Copy Right @InkaTravel S. A.</div>
       </div>
     </footer>
   );
@@ -35,7 +35,7 @@ export default function Footer() {
 const styles = {
   footer: {
     color: "white",
-    backgroundColor: "#480ca8",
+    backgroundColor: "#091F31",
     textAlign: "center",
     boxShadow:
       "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",

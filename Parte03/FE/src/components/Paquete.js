@@ -9,7 +9,7 @@ export default function Paquete(props) {
         <div className="col">
           <img src={cusco} alt="cusco" style={styles.imagePaquete} />
         </div>
-        <div className="col">
+        <div className="col" style={styles.letters}>
           <h5 style={styles.titlePaquete}>{props.namePaquete}</h5>
           <div style={styles.calificacion}>
             <i className="material-icons">star</i>
@@ -35,8 +35,13 @@ export default function Paquete(props) {
 
 const styles = {
   cardPaquete: {
-    padding: "0",
     margin: "10px",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    borderRadius: "25px",
+    width: "900px",
+    textAlign: "center",
+    padding: "10px",
+    backgroundColor: "#2C3949",
   },
   titlePaquete: {
     padding: "10px",
@@ -54,4 +59,7 @@ const styles = {
     flexDirection: "row",
     alignItems: "center",
   },
+  letters: {
+    color: "white",
+  }
 };

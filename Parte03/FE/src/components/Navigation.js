@@ -81,7 +81,7 @@ function mouseOverLink(e) {
 }
 
 function mouseLeaveLink(e) {
-  e.currentTarget.style.borderBottom = "2px solid #480ca8";
+  e.currentTarget.style.borderBottom = "2px solid #091F31";
 }
 
 const styles = {
@@ -97,7 +97,7 @@ const styles = {
     justifyContent: "space-between",
     boxShadow:
       "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-    backgroundColor: "#480ca8",
+    backgroundColor: "#091F31",
   },
   navLeftAndRight: {
     display: "flex",
@@ -106,7 +106,7 @@ const styles = {
     justifyContent: "space-around",
   },
   navItem: {
-    borderBottom: "2px solid #480ca8",
+    borderBottom: "2px solid #091F31",
   },
   navLink: {
     color: "white",

@@ -13,7 +13,7 @@ export default function Paquetes() {
 
         <div className="container">
           <div className="row">
-            <div className="col-2">
+            <div className="col-2" style={{border: "1px solid", borderRadius: "15px", height: "330px", backgroundColor: "rgba(87, 105, 117, 0.5)",}}>
               <Filtros />
             </div>
             <div className="col-10">

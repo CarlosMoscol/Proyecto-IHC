@@ -11,6 +11,7 @@ export default function SelectDestinos() {
       <div
         className="container-fluid"
         style={{
+          fontStyle: "italic",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-around",
