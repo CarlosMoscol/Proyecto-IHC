@@ -12,7 +12,7 @@ export default function RegistrarmeaAfiliado() {
           borderRadius: "15px",
         }}
       >
-        <h4>Travel Perú</h4>
+        <h4>InkaTravel</h4>
         <Title title="Email y password" />
         <div class="mb-3">
           <label for="exampleInputEmail1" className="form-label">
@@ -149,7 +149,7 @@ export default function RegistrarmeaAfiliado() {
           />
           <label className="form-check-label" for="exampleCheck1">
             Acepto las politcas de privacidad, asi como los{" "}
-            <a href="#1">terminos y condiciones</a> de Travel perú
+            <a href="#1">terminos y condiciones</a> de InkaTravel
           </label>
         </div>
         <Title title="Medio de pago" />

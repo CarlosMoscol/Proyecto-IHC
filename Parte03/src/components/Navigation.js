@@ -12,7 +12,7 @@ export default function Navigation() {
           onMouseLeave={mouseLeaveLink}
         >
           <Link style={styles.navLink} to="/">
-            <b>Travel Perú</b>
+            <b>InkaTravel</b>
           </Link>
         </div>
         <div

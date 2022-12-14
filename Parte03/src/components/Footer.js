@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="row p-5">
         <div className="col">
           <h5>
-            <b>Travel Perú</b>
+            <b>InkaTravel</b>
           </h5>
           Somos la mejor empresa de paquetes turiticos
         </div>
@@ -20,13 +20,13 @@ export default function Footer() {
         <div className="col">
           <h5>Soporte</h5>
           <ul>
-            <li>Telefono: 987654321</li>
-            <li>Email: Grupo2-SAC@travelperu.com</li>
+            <li>Telefono: xxx-xxx-xxx</li>
+            <li>Email: xxxx@example.com</li>
           </ul>
         </div>
       </div>
       <div className="row">
-        <div className="col p-5">Copy Right Grupo2-SAC: 2020-infinito</div>
+        <div className="col p-5">Copy Right InkaTravel S. A.</div>
       </div>
     </footer>
   );

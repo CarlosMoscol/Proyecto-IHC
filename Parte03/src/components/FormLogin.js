@@ -10,7 +10,7 @@ export default function FormLogin() {
         borderRadius: "15px",
       }}
     >
-      <h4>Travel Perú</h4>
+      <h4>InkaTravel</h4>
       <div class="mb-3">
         <label for="exampleInputEmail1" className="form-label">
           Email address

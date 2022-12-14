@@ -10,7 +10,7 @@ export default function FormRegister() {
         borderRadius: "15px",
       }}
     >
-      <h4>Travel Perú</h4>
+      <h4>InkaTravel</h4>
       <div style={styles.fastRes}>
         Registrarme con google <i class="fab fa-google"></i>
       </div>
