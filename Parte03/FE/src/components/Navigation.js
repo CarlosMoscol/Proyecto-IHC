@@ -49,7 +49,7 @@ export default function Navigation() {
           onMouseOver={mouseOverLink}
           onMouseLeave={mouseLeaveLink}
         >
-          <Link style={styles.navLink} to="/AuthUser">
+          <Link style={styles.navLink} to="/login">
             Iniciar sesión
           </Link>
         </div>

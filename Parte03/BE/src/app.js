@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3001
+const port = 3000
 
 
 const control_cliente = require('./controllers/control_cliente')
@@ -13,7 +13,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/', (req, res) => {
+/*
+app.get('/AuthUser/:id', (req, res) => {
   control_cliente.getclients()
   .then(response => {
     res.status(200).send(response);
@@ -22,8 +23,9 @@ app.get('/', (req, res) => {
     res.status(500).send(error);
   })
 })
+*/
 
-app.post('/merchants', (req, res) => {
+app.post('/AuthUser', (req, res) => {
   control_cliente.createclient(req.body)
   .then(response => {
     res.status(200).send(response);
@@ -32,8 +34,8 @@ app.post('/merchants', (req, res) => {
     res.status(500).send(error);
   })
 })
-
-app.delete('/merchants/:id', (req, res) => {
+/*
+app.delete('/AuthUser/:id', (req, res) => {
   control_cliente.deleteclient(req.params.id)
   .then(response => {
     res.status(200).send(response);
@@ -42,7 +44,7 @@ app.delete('/merchants/:id', (req, res) => {
     res.status(500).send(error);
   })
 })
-
+*/
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })

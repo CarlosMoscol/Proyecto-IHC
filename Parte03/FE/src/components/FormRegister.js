@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function FormRegister() {
+  const navigate = useNavigate();
+
+  function loginPage() {
+    navigate('/login');
+  }
   return (
     <form
       style={{
@@ -11,6 +17,7 @@ export default function FormRegister() {
       }}
     >
       <h4>InkaTravel</h4>
+
       <div style={styles.fastRes}>
         Registrarme con google <i class="fab fa-google"></i>
       </div>
@@ -74,8 +81,25 @@ export default function FormRegister() {
       <button type="submit" className="btn btn-primary w-100">
         Registrame
       </button>
+      <div
+        onClick={loginPage}
+        onMouseLeave={leave}
+        onMouseOver={over}
+        style={styles.itemOOp}
+        align= "center"
+      >
+        Ya tengo cuenta
+      </div>
     </form>
   );
+}
+function over(e) {
+  e.target.style.backgroundColor = " rgb(29, 107, 143)";
+  e.target.style.cursor = "pointer";
+}
+
+function leave(e) {
+  e.target.style.backgroundColor = "rgb(29, 89, 143)";
 }
 
 const styles = {
@@ -84,6 +108,14 @@ const styles = {
     padding: "5px",
     margin: "5px",
     border: "1px solid rgb(122, 72, 187)",
+    borderRadius: "10px",
+  },
+  
+  itemOOp: {
+    backgroundColor: "rgb(29, 89, 143)",
+    color: "white",
+    padding: "10px",
+    margin: "10px",
     borderRadius: "10px",
   },
 };
