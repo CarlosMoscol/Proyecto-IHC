@@ -147,15 +147,17 @@ const styles = {
     borderRadius: "15px",
     boxShadow:
       "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    backgroundColor: "rgba(87, 105, 117, 0.9)",
   },
   colap: {
     zIndex: "-1",
   },
   detail: {
-    backgroundColor: "rgba(87, 105, 117, 0.9)",
+    backgroundColor: "#2C3949",
     borderRadius: "10px",
     color: "white",
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.3)",
     marginBottom: "10px",
+    padding: "10px",
   }
 };
