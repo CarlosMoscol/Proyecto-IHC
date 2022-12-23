@@ -1,6 +1,11 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
+import {
+  useState,
+  useEffect
+} from 'react';
 
+import { CircularProgress } from '@material-ui/core';
 
 export default function FormRegister() {
   const navigate = useNavigate();
@@ -8,7 +13,37 @@ export default function FormRegister() {
   function loginPage() {
     navigate('/login');
   }
-  
+
+  const [client, setClient] = useState({
+    name: '',
+    email: '',
+    password: '',
+    type: 'turista',
+  })
+
+  const [loading, setloading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setloading(true)
+
+    const res = await fetch('http://localhost:4000/Registro', {
+      method: 'POST',
+      body: JSON.stringify(client),
+      headers: { "Content-Type": "application/json" }
+    })
+    const data = await res.json();
+    console.log(data)
+
+    setloading(false)
+
+    navigate('/login')
+  }
+
+  const handleChange = e => {
+    setClient({ ...client, [e.target.name]: e.target.value });
+  }
 
   return (
     <form
@@ -18,55 +53,63 @@ export default function FormRegister() {
         margin: "10px",
         borderRadius: "15px",
       }}
+      onSubmit={handleSubmit}
     >
-      <h4>InkaTravel</h4>
-
+      <h4>InkaTravel te da la bienvenida</h4>
+      <h6>¡Es un gusto en tenerte aqui!</h6>
+      <h6>Cuentanos un poco sobre ti...</h6>
+      {/*
       <div style={styles.fastRes}>
         Registrarme con google <i class="fab fa-google"></i>
       </div>
       <div style={styles.fastRes}>
         Registrame con Facebook <i class="fab fa-facebook"></i>
       </div>
+      */}
       <div class="mb-3">
-        <label for="exampleInputEmail1" className="form-label">
+        <label className="form-label">
           Nombre
         </label>
         <input
           type="text"
           className="form-control"
           name="name"
-          id="exampleName1"
+          onChange={handleChange}
         />
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" className="form-label">
+        <label className="form-label">
           Email
         </label>
         <input
           type="email"
           className="form-control"
-          id="exampleInputEmail1"
+          name="email"
           aria-describedby="emailHelp"
+          onChange={handleChange}
         />
       </div>
+
       <div class="mb-3">
-        <label for="exampleInputPassword1" className="form-label">
+        <label className="form-label">
           Contraseña
         </label>
         <input
           type="password"
+          name="password"
           className="form-control"
-          id="exampleInputPassword1"
+          onChange={handleChange}
         />
       </div>
+      {/*
       <div class="mb-3">
-        <label for="exampleInputPassword1" className="form-label">
+        <label className="form-label">
           Confirma la contraseña
         </label>
         <input
           type="password"
           className="form-control"
-          id="exampleInputPassword1"
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3 form-check"></div>
@@ -88,25 +131,30 @@ export default function FormRegister() {
           id="exampleCheck1"
         />
         <label className="form-check-label" for="exampleCheck1">
-          Acepto las politcas de privacidad, asi como los{" "}
+          Acepto las políticas de privacidad, asi como los{" "}
           <a href="#1">terminos y condiciones</a> de Travel perú
         </label>
       </div>
-      <button type="submit" className="btn btn-primary w-100">
-        Registrame
+      */}
+      <button type="submit" className="btn btn-primary w-100" disabled={!client.name || !client.email || !client.password}>
+        {loading ? (<CircularProgress color="inherit" size={24} />
+        ) : (
+          'Registrarme'
+        )}
       </button>
       <div
         onClick={loginPage}
         onMouseLeave={leave}
         onMouseOver={over}
         style={styles.itemOOp}
-        align= "center"
+        align="center"
       >
         Ya tengo cuenta
       </div>
     </form>
   );
 }
+
 function over(e) {
   e.target.style.backgroundColor = " rgb(29, 107, 143)";
   e.target.style.cursor = "pointer";
@@ -124,7 +172,7 @@ const styles = {
     border: "1px solid rgb(122, 72, 187)",
     borderRadius: "10px",
   },
-  
+
   itemOOp: {
     backgroundColor: "rgb(29, 89, 143)",
     color: "white",
