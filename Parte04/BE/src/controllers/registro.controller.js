@@ -43,7 +43,27 @@ const createRegistro = async (req, res, next) => {
 
         const result2 = await pool.query("INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)");
 
-        const result3 = await pool.query("INSERT INTO affiliates (idclient) SELECT idclient FROM clients WHERE type='afiliado' AND idclient NOT IN (SELECT idclient FROM affiliates)")
+        res.json(result.rows[0]);
+
+    } catch (error) {
+        next(error)
+    }
+};
+
+const createRegistroAfil = async (req, res, next) => {
+    const { name, email, password, type, ruc } = req.body
+
+    try {
+        const result = await pool.query('INSERT INTO clients (name, email, password, type) VALUES ($1, $2, $3, $4) RETURNING *', [
+            name,
+            email,
+            password,
+            type,
+        ]);
+
+        const result2 = await pool.query("INSERT INTO affiliates (ruc, idclient) SELECT $1, idclient FROM clients WHERE type='afiliado' AND idclient NOT IN (SELECT idclient FROM affiliates)", [
+            ruc,
+        ]);
 
         res.json(result.rows[0]);
 
@@ -97,6 +117,7 @@ module.exports = {
     getAllRegistro,
     getRegistro,
     createRegistro,
+    createRegistroAfil,
     deleteRegistro,
     updateRegistro
 }

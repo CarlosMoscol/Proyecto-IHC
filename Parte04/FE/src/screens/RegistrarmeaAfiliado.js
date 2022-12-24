@@ -4,12 +4,53 @@ import { useNavigate } from 'react-router-dom';
 
 import cuscoFondo from "../source/image/cuscoFondo.jpg";
 
+import {
+  useState,
+  useEffect
+} from 'react';
+
+import { CircularProgress } from '@material-ui/core';
+
 export default function RegistrarmeaAfiliado() {
   const navigate = useNavigate();
 
   function loginPage() {
     navigate('/login');
   }
+
+  const [client, setClient] = useState({
+    name: '',
+    email: '',
+    password: '',
+    type: 'afiliado',
+    ruc: '',
+  })
+
+  const [loading, setloading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setloading(true)
+
+    const res = await fetch('http://localhost:4000/Registro/afil', {
+      method: 'POST',
+      body: JSON.stringify(client),
+      headers: { "Content-Type": "application/json" }
+    })
+    const data = await res.json();
+    console.log(data)
+
+    setloading(false)
+
+    navigate('/login')
+  }
+
+  const handleChange = e => {
+    setClient({ ...client, [e.target.name]: e.target.value });
+  }
+
+
   return (
     <div style={styles.containerAuth}>
       <div style={styles.otherOption}>
@@ -21,9 +62,42 @@ export default function RegistrarmeaAfiliado() {
               margin: "10px",
               borderRadius: "15px",
             }}
+            onSubmit={handleSubmit}
           >
             <h4>InkaTravel</h4>
             <Title title="Email y password" />
+            <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+
+            }}
+            class="mb-3">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" className="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" className="form-label">
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            {/*
             <div class="mb-3">
               <label for="exampleInputEmail1" className="form-label">
                 Email
@@ -31,6 +105,7 @@ export default function RegistrarmeaAfiliado() {
               <input
                 type="email"
                 className="form-control"
+                name="email"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
               />
@@ -41,10 +116,13 @@ export default function RegistrarmeaAfiliado() {
               </label>
               <input
                 type="password"
+                name="password"
                 className="form-control"
                 id="exampleInputPassword1"
               />
             </div>
+            */}
+            {/*
             <div class="mb-3">
               <label for="exampleInputPassword1" className="form-label">
                 Confirma la contraseña
@@ -55,9 +133,9 @@ export default function RegistrarmeaAfiliado() {
                 id="exampleInputPassword1"
               />
             </div>
-            <div className="mb-3 form-check"></div>
+            */}
 
-            <Title title="Empresa o Independiente" />
+            {/*<Title title="Empresa o Independiente" />*/}
 
             <Title title="Datos Personales" />
             <div
@@ -70,40 +148,30 @@ export default function RegistrarmeaAfiliado() {
             >
               <div class="mb-3 p-2">
                 <label for="exampleInputEmail1" className="form-label">
-                  Nombre(s)
+                  Nombre(s) Apellidos(s)
                 </label>
                 <input
-                  type="email"
+                  type="name"
+                  name="name"
                   className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
+                  onChange={handleChange}
                 />
               </div>
-              <div class="mb-3 p-2">
-                <label for="exampleInputEmail1" className="form-label">
-                  Apellidos(s)
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-              </div>
+              {/*
               <div className="mb-3 p-2">
                 <label>Fecha de Nacimiento</label>
                 <input class="form-control" type="date" />
               </div>
-
+              */}
               <div class="mb-3 p-2">
                 <label for="exampleInputEmail1" className="form-label">
-                  Telefono
+                  RUC
                 </label>
                 <input
-                  type="Number"
+                  type="text"
+                  name="ruc"
                   className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -162,6 +230,7 @@ export default function RegistrarmeaAfiliado() {
                 <a href="#1">terminos y condiciones</a> de InkaTravel
               </label>
             </div>
+            {/** 
             <Title title="Medio de pago" />
             <div>
               <b>
@@ -230,9 +299,22 @@ export default function RegistrarmeaAfiliado() {
                 Enviar al E-mail las transacciones.
               </label>
             </div>
-            <button type="submit" className="btn btn-primary w-100">
-              Registrarse
-            </button>
+            */}
+            <div
+            style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+              }}
+            >
+              <button type="submit" className="btn btn-primary w-100" disabled={!client.name || !client.email || !client.password}>
+                {loading ? (<CircularProgress color="inherit" size={24} />
+                ) : (
+                  'Registrarse'
+                )}
+              </button>
+            </div>
             <div
               onClick={loginPage}
               onMouseLeave={leave}
@@ -271,6 +353,9 @@ const styles = {
     alignItems: "center",
   },
   itemOOp: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
     backgroundColor: "rgb(29, 89, 143)",
     color: "white",
     padding: "10px",
