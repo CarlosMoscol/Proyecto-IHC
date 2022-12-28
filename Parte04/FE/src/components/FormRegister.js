@@ -58,14 +58,6 @@ export default function FormRegister() {
       <h4>InkaTravel te da la bienvenida</h4>
       <h6>¡Es un gusto en tenerte aqui!</h6>
       <h6>Cuentanos un poco sobre ti...</h6>
-      {/*
-      <div style={styles.fastRes}>
-        Registrarme con google <i class="fab fa-google"></i>
-      </div>
-      <div style={styles.fastRes}>
-        Registrame con Facebook <i class="fab fa-facebook"></i>
-      </div>
-      */}
       <div class="mb-3">
         <label className="form-label">
           Nombre
@@ -101,41 +93,7 @@ export default function FormRegister() {
           onChange={handleChange}
         />
       </div>
-      {/*
-      <div class="mb-3">
-        <label className="form-label">
-          Confirma la contraseña
-        </label>
-        <input
-          type="password"
-          className="form-control"
-          onChange={handleChange}
-        />
-      </div>
-      <div className="mb-3 form-check"></div>
-
-      <div className="mb-3 form-check">
-        <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
-        />
-        <label className="form-check-label" for="exampleCheck1">
-          Quiero recibir promociones de ofertas
-        </label>
-      </div>
-      <div className="mb-3 form-check">
-        <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
-        />
-        <label className="form-check-label" for="exampleCheck1">
-          Acepto las políticas de privacidad, asi como los{" "}
-          <a href="#1">terminos y condiciones</a> de Travel perú
-        </label>
-      </div>
-      */}
+      
       <button type="submit" className="btn btn-primary w-100" disabled={!client.name || !client.email || !client.password}>
         {loading ? (<CircularProgress color="inherit" size={24} />
         ) : (

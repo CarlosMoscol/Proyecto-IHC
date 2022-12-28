@@ -75,17 +75,8 @@ export default function FormLogin() {
           onChange={handleChange}
         />
       </div>
-      <div className="mb-3 form-check"></div>
-      <div className="mb-3 form-check">
-        <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
-        />
-        <label className="form-check-label" for="exampleCheck1">
-          Guardar Contraseña
-        </label>
-      </div>
+      <br></br>
+      
       <button type="submit" className="btn btn-primary w-100" disabled={!login.email || !login.password}>
         {loading ? (<CircularProgress color="inherit" size={24} />
         ) : (
