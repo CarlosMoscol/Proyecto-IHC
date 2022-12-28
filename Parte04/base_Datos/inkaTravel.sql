@@ -1,6 +1,8 @@
+-- -- Incluyendo libreria para generar un ID unico randomizado
+CREATE EXTENSION pgcrypto;
 --Creación de tablas para la base de datos relacional
 CREATE TABLE clients(
-	idClient UUID,
+	idClient UUID DEFAULT gen_random_uuid(),
 	name VARCHAR(100),
 	email VARCHAR(100),
 	password VARCHAR(100),
@@ -8,18 +10,18 @@ CREATE TABLE clients(
 	PRIMARY KEY(idClient)
 );
 CREATE TABLE tourists(
-	idTourist UUID,
+	idTourist UUID DEFAULT gen_random_uuid(),
 	idClient UUID REFERENCES clients(idclient) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY(idTourist)
 );
 CREATE TABLE affiliates(
-	idAffiliate UUID,
+	idAffiliate UUID DEFAULT gen_random_uuid(),
 	ruc VARCHAR(11),
 	idClient UUID REFERENCES clients(idclient) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (idAffiliate)
 );
 CREATE TABLE transports(
-	idTransport UUID,
+	idTransport UUID DEFAULT gen_random_uuid(),
 	nameTransport VARCHAR(100),
 	price INT,
 	placeDeparture VARCHAR(100),
@@ -31,7 +33,7 @@ CREATE TABLE transports(
 	PRIMARY KEY (idTransport)
 );
 CREATE TABLE accommodations(
-	idAccommodation UUID,
+	idAccommodation UUID DEFAULT gen_random_uuid(),
 	nameAccommodation VARCHAR(100),
 	price INT,
 	ubication VARCHAR (100),
@@ -42,7 +44,7 @@ CREATE TABLE accommodations(
 	PRIMARY KEY (idAccommodation)
 );
 CREATE TABLE touristPlaces(
-	idTouristPlace UUID,
+	idTouristPlace UUID DEFAULT gen_random_uuid(),
 	nameTouristPlace VARCHAR(100),
 	price INT,
 	ubication VARCHAR(100),
@@ -52,7 +54,7 @@ CREATE TABLE touristPlaces(
 	PRIMARY KEY (idTouristPlace)
 );
 CREATE TABLE travelPackages(
-	idTravelPackage UUID,
+	idTravelPackage UUID DEFAULT gen_random_uuid(),
 	arrayTouristPlaces JSON,
 	arrayAccommodations JSON,
 	arrayTransports TEXT,
@@ -64,7 +66,7 @@ CREATE TABLE travelPackages(
 	PRIMARY KEY(idTravelPackage)
 );
 CREATE TABLE buys(
-	idBuy UUID,
+	idBuy UUID DEFAULT gen_random_uuid(),
 	dateBuy DATE,
 	numPersons INT,
 	price INT,
@@ -86,29 +88,24 @@ select * from buys
 select * from travelPackages
 --
 --Ejemplo de query para insertar datos de una tabla a otra:
-INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)
+--INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)
 --
-INSERT INTO affiliates (ruc, idclient) SELECT 'ruc123',idclient FROM clients
-WHERE type='afiliado'
-AND
-idclient NOT IN (SELECT idclient FROM affiliates)
+--INSERT INTO affiliates (ruc, idclient) SELECT 'ruc123',idclient FROM clients WHERE type='afiliado' AND idclient NOT IN (SELECT idclient FROM affiliates)
 --
 -- Ejemplo de actualización de cliente
-UPDATE clients SET name = 'prueba previa', email ='ejm.prev@email.com', password='contra123' WHERE idclient=5
+--UPDATE clients SET name = 'prueba previa', email ='ejm.prev@email.com', password='contra123' WHERE idclient=5
 
 --Ejemplo de borrado en cascada de un cliente:
-DELETE FROM clients WHERE idclient = 'f29f26d4-c729-42e9-86f7-564ef06194c8';
+--DELETE FROM clients WHERE idclient = 'f29f26d4-c729-42e9-86f7-564ef06194c8';
 --
 -- Modificar clave foranea para poder hacer un borrado en cascada desde la tabla cliente
 -----------------------------------
-ALTER TABLE affiliates ADD FOREIGN KEY(idclient)
-REFERENCES clients(idclient) ON DELETE CASCADE;
+--ALTER TABLE affiliates ADD FOREIGN KEY(idclient)
+--REFERENCES clients(idclient) on update cascade ON DELETE CASCADE;
 -----------------------------------
 -- Modificar primary key para que sea de tipo UUID:
--- -- Incluyendo libreria para generar un ID unico randomizado
-CREATE EXTENSION pgcrypto;
 -- Alterando columna de idclient:
-ALTER TABLE clients ALTER COLUMN idclient SET DEFAULT gen_random_uuid();
+--ALTER TABLE clients ALTER COLUMN idclient SET DEFAULT gen_random_uuid();
 --ALTER TABLE "tourists" ALTER COLUMN "idtourist" SET DEFAULT gen_random_uuid();
 --ALTER TABLE affiliates ALTER COLUMN idAffiliate SET DEFAULT gen_random_uuid();
 --ALTER TABLE transports ALTER COLUMN idTransport SET DEFAULT gen_random_uuid();
