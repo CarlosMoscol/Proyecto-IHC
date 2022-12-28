@@ -1,4 +1,5 @@
 //importing modules
+const pool = require('../db');
 const bcrypt = require("bcrypt");
 const db = require("../Models");
 const jwt = require("jsonwebtoken");
@@ -8,7 +9,7 @@ const Client = db.clients;
 
 //signing a client up
 //hashing clients password before its saved to the database with bcrypt
-const signup = async (req, res) => {
+{/*const signup = async (req, res) => {
  try {
    const { name, email, password, type } = req.body;
    const data = {
@@ -19,7 +20,7 @@ const signup = async (req, res) => {
    };
    //saving the client
    const client = await Client.create(data);
-
+  //const result2 = await pool.query("INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)");
    //if client details is captured
    //generate token with the client's id and the secretKey in the env file
    // set cookie with the token generated
@@ -39,7 +40,7 @@ const signup = async (req, res) => {
  } catch (error) {
    console.log(error);
  }
-};
+};*/}
 
 
 //login authentication
@@ -86,6 +87,6 @@ const { email, password } = req.body;
 };
 
 module.exports = {
- signup,
+ //signup,
  login,
 };

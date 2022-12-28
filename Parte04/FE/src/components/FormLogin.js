@@ -30,10 +30,11 @@ export default function FormLogin() {
     })
     const data = await res.json();
     console.log(data)
+    localStorage.setItem("login", JSON.stringify(data));
 
     setloading(false)
 
-    navigate('/')
+    navigate('/MiPerfil')
   }
 
   const handleChange = e => {

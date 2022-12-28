@@ -36,21 +36,18 @@ const getRegistro = async (req, res, next) => {
 const createRegistro = async (req, res, next) => {
     const { name, email, password, type } = req.body
     const data = {
-        name,
-        email,
         password: await bcrypt.hash(password, 10),
-        type,
       };
     try {
         const result = await pool.query('INSERT INTO clients (name, email, password, type) VALUES ($1, $2, $3, $4) RETURNING *', [
-            data.name,
-            data.email,
+            name,
+            email,
             data.password,
-            data.type,
+            type,
         ]);
 
-        {/*const result2 = await pool.query("INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)");
-        res.json(result.rows[0]);*/}
+        const result2 = await pool.query("INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)");
+        {/*res.json(result.rows[0]);*/}
 
         if (result) {
             let token = jwt.sign({ idclient: result.idclient }, process.env.secretKey, {
@@ -61,7 +58,7 @@ const createRegistro = async (req, res, next) => {
             console.log("client", JSON.stringify(result, null, 2));
             console.log(token);
             //send clients details
-            return res.status(201).send(result);
+            return res.status(201).json(result.rows[0]);
           } else {
             return res.status(409).send("Details are not correct");
           }
@@ -75,25 +72,35 @@ const createRegistro = async (req, res, next) => {
 const createRegistroAfil = async (req, res, next) => {
     const { name, email, password, type, ruc } = req.body
     const data = {
-        name,
-        email,
         password: await bcrypt.hash(password, 10),
-        type,
-        ruc,
       };
     try {
         const result = await pool.query('INSERT INTO clients (name, email, password, type) VALUES ($1, $2, $3, $4) RETURNING *', [
-            data.name,
-            data.email,
+            name,
+            email,
             data.password,
-            data.type,
+            type,
         ]);
 
         const result2 = await pool.query("INSERT INTO affiliates (ruc, idclient) SELECT $1, idclient FROM clients WHERE type='afiliado' AND idclient NOT IN (SELECT idclient FROM affiliates)", [
-            data.ruc,
+            ruc,
         ]);
 
-        res.json(result.rows[0]);
+        //res.json(result.rows[0]);
+
+        if (result) {
+            let token = jwt.sign({ idclient: result.idclient }, process.env.secretKey, {
+              expiresIn: 1 * 24 * 60 * 60 * 1000,
+            });
+       
+            res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
+            console.log("client", JSON.stringify(result, null, 2));
+            console.log(token);
+            //send clients details
+            return res.status(201).json(result.rows[0]);
+          } else {
+            return res.status(409).send("Details are not correct");
+          }
 
     } catch (error) {
         next(error)
