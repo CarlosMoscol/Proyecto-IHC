@@ -6,7 +6,6 @@ import cuscoFondo from "../source/image/cuscoFondo.jpg";
 
 import {
   useState,
-  useEffect
 } from 'react';
 
 import { CircularProgress } from '@material-ui/core';
