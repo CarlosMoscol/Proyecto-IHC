@@ -9,13 +9,13 @@ CREATE TABLE clients(
 );
 CREATE TABLE tourists(
 	idTourist UUID,
-	idClient UUID REFERENCES clients(idclient) ON DELETE CASCADE,
+	idClient UUID REFERENCES clients(idclient) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY(idTourist)
 );
 CREATE TABLE affiliates(
 	idAffiliate UUID,
 	ruc VARCHAR(11),
-	idClient UUID REFERENCES clients(idclient) ON DELETE CASCADE,
+	idClient UUID REFERENCES clients(idclient) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (idAffiliate)
 );
 CREATE TABLE transports(
@@ -27,7 +27,7 @@ CREATE TABLE transports(
 	numSeats INT,
 	urlImageTransport TEXT,
 	description TEXT,
-	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON DELETE CASCADE,
+	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (idTransport)
 );
 CREATE TABLE accommodations(
@@ -38,7 +38,7 @@ CREATE TABLE accommodations(
 	capacity INT,
 	urlImageAccommodation TEXT,
 	description TEXT,
-	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON DELETE CASCADE,
+	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (idAccommodation)
 );
 CREATE TABLE touristPlaces(
@@ -48,7 +48,7 @@ CREATE TABLE touristPlaces(
 	ubication VARCHAR(100),
 	urlImageTouristPlace TEXT,
 	description TEXT,
-	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON DELETE CASCADE,
+	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (idTouristPlace)
 );
 CREATE TABLE travelPackages(
@@ -70,8 +70,8 @@ CREATE TABLE buys(
 	price INT,
 	dateStart DATE,
 	dateEnd DATE,
-	idTourist UUID REFERENCES tourists(idTourist) ON DELETE CASCADE,
-	idTravelPackage UUID REFERENCES travelPackages(idTravelPackage) ON DELETE CASCADE,
+	idTourist UUID REFERENCES tourists(idTourist) ON UPDATE CASCADE ON DELETE CASCADE,
+	idTravelPackage UUID REFERENCES travelPackages(idTravelPackage) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (idBuy)
 );
 --

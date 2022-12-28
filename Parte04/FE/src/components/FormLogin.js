@@ -1,6 +1,45 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import {
+  useState,
+  useEffect
+} from 'react';
+
+import { CircularProgress } from '@material-ui/core';
 
 export default function FormLogin() {
+  const navigate = useNavigate();
+
+  const [login, setLogin] = useState({
+    email: '',
+    password: '',
+  })
+
+
+  const [loading, setloading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setloading(true)
+
+    const res = await fetch('http://localhost:4000/login', {
+      method: 'POST',
+      body: JSON.stringify(login),
+      headers: { "Content-Type": "application/json" }
+    })
+    const data = await res.json();
+    console.log(data)
+
+    setloading(false)
+
+    navigate('/')
+  }
+
+  const handleChange = e => {
+    setLogin({ ...login, [e.target.name]: e.target.value });
+  }
+
   return (
     <form
       style={{
@@ -9,6 +48,7 @@ export default function FormLogin() {
         margin: "10px",
         borderRadius: "15px",
       }}
+      onSubmit={handleSubmit}
     >
       <h4>InkaTravel</h4>
       <div class="mb-3">
@@ -17,9 +57,10 @@ export default function FormLogin() {
         </label>
         <input
           type="email"
+          name="email"
           className="form-control"
-          id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          onChange={handleChange}
         />
       </div>
       <div class="mb-3">
@@ -28,8 +69,10 @@ export default function FormLogin() {
         </label>
         <input
           type="password"
+          name="password"
           className="form-control"
           id="exampleInputPassword1"
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3 form-check"></div>
@@ -43,8 +86,11 @@ export default function FormLogin() {
           Guardar Contraseña
         </label>
       </div>
-      <button type="submit" className="btn btn-primary w-100">
-        Ingresar
+      <button type="submit" className="btn btn-primary w-100" disabled={!login.email || !login.password}>
+        {loading ? (<CircularProgress color="inherit" size={24} />
+        ) : (
+          'Ingresar'
+        )}
       </button>
     </form>
   );

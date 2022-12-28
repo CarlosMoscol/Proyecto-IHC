@@ -8,6 +8,11 @@ const {
     createRegistroAfil
 } = require ('../controllers/registro.controller')
 
+const userController = require('../controllers/userController')
+const { signup, login } = userController
+const userAuth = require('../middlewares/userAuth')
+
+
 const router = Router();
 
 router.get('/Registro', getAllRegistro)
@@ -17,6 +22,13 @@ router.get('/Registro/:idclient', getRegistro)
 router.post('/Registro', createRegistro)
 
 router.post('/Registro/afil', createRegistroAfil)
+
+
+
+router.post('/signup', userAuth.saveUser, signup)
+router.post('/login', login )
+
+
 
 
 router.delete('/Registro/:idclient', deleteRegistro)
