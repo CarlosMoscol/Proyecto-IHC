@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import {
   useState,
 } from 'react';
+import AuthService from "../services/auth.service";
 
 import { CircularProgress } from '@material-ui/core';
+import { withRouter } from '../common/with-router';
 
-export default function FormLogin() {
+function FormLogin() {
   const navigate = useNavigate();
-
   const [login, setLogin] = useState({
     email: '',
     password: '',
@@ -29,11 +30,13 @@ export default function FormLogin() {
     })
     const data = await res.json();
     console.log(data)
-    localStorage.setItem("login", JSON.stringify(data));
-
+    localStorage.setItem("client", JSON.stringify(data));
+    console.log(localStorage.getItem('client'))
     setloading(false)
-
-    navigate('/MiPerfil')
+    const API_URL = "/Miperfil/";
+    const client = AuthService.getCurrentUser();
+    navigate(API_URL+JSON.stringify(client.idclient))
+    window.location.reload()
   }
 
   const handleChange = e => {
@@ -86,3 +89,5 @@ export default function FormLogin() {
     </form>
   );
 }
+
+export default withRouter(FormLogin);

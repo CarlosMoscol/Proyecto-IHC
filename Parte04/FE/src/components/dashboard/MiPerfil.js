@@ -1,8 +1,10 @@
 import React from "react";
+import AuthService from "../../services/auth.service";
 
 import userImagenPerfil from "../../source/image/user/userImagen.png";
 
 export default function MiPerfil() {
+  const client = AuthService.getCurrentUser();
   return (
     <div className="conatiner p-5">
       <div className="row">
@@ -17,16 +19,16 @@ export default function MiPerfil() {
         </div>
         <div className="col-8">
           <div>
-            <h5>Afiliado Independiente</h5>
+            <h5>{client.type} Independiente</h5>
           </div>
           <ul>
-            <li>Nombre: Jhon Doe</li>
-            <li>Didicación: Transportista</li>
+            <li>Nombre: {client.name}</li>
+            <li>Oficio: Transportista</li>
             <li>
               Calificación: 4.5 <i className="material-icons">star</i>
             </li>
             <li>
-              Email: jhonDoe@uni.pe <i className="material-icons">edit</i>
+              Email: {client.email} <i className="material-icons">edit</i>
             </li>
             <li>
               Telefono: 987654321 <i className="material-icons">edit</i>

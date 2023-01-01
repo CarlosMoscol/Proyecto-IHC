@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import IniciarSesion from "./IniciarSesion";
 
 import cuscoFondo from "../source/image/cuscoFondo.jpg";
-import Registrarme from "./Registrarme";
-import RegistrarmeaAfiliado from "./RegistrarmeaAfiliado";
 
 
 
@@ -14,14 +12,7 @@ function ContentSelection(props) {
   if (option === "iniciarSesion") {
     return <IniciarSesion />;
   }
-  if (option === "Registrarme") {
-    return <Registrarme />;
-  }
-  if (option === "RegistrarmeAfiliado") {
-    return <RegistrarmeaAfiliado />;
-  }
 }
-
 
 export default function AuthUser() {
   const [option, setoption] = useState("iniciarSesion");

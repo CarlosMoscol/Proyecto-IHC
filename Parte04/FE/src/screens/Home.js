@@ -1,6 +1,7 @@
 import React from "react";
 import Buscar from "../components/Buscar";
 import Title from "../components/Title";
+
 import cuscoFondo from "../source/image/cuscoFondo.jpg";
 
 export default function Home() {

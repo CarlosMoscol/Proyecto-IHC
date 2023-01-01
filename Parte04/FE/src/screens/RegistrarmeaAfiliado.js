@@ -64,36 +64,6 @@ export default function RegistrarmeaAfiliado() {
             onSubmit={handleSubmit}
           >
             <h4>InkaTravel</h4>
-            <Title title="Email y password" />
-            <div style={{
-              width: "500px",
-              justifyContent: "space-around",
-              alignItems: "center",
-              }} class="mb-3">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  onChange={handleChange}
-                />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" className="form-label">
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
             <Title title="Datos Personales" />
             <div
               style={{
@@ -126,6 +96,37 @@ export default function RegistrarmeaAfiliado() {
                 />
               </div>
             </div>
+            <Title title="Email y password" />
+            <div style={{
+              width: "500px",
+              justifyContent: "space-around",
+              alignItems: "center",
+              }} class="mb-3">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" className="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" className="form-label">
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+
 
             
             <div className="mb-3 form-check">
@@ -148,7 +149,7 @@ export default function RegistrarmeaAfiliado() {
                 alignItems: "center",
               }}
             >
-              <button type="submit" className="btn btn-primary w-100" disabled={!client.name || !client.email || !client.password}>
+              <button type="submit" className="btn btn-primary w-100" disabled={!client.name || !client.email || !client.password || !client.ruc}>
                 {loading ? (<CircularProgress color="inherit" size={24} />
                 ) : (
                   'Registrarse'
