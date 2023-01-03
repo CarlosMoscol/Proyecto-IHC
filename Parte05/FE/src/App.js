@@ -13,6 +13,10 @@ import MiPerfil from "./screens/MiPerfil";
 import Dashboard from "./screens/Dashboard";
 import AdquirirPaquete from "./screens/AdquirirPaquete";
 
+import AgregarTransporte from "./components/dashboard/AgregarTransporte";
+import QuitarServicio from "./components/dashboard/QuitarServicio";
+
+
 import Footer from "./components/Footer";
 import RegistrarmeaAfiliado from "./screens/RegistrarmeaAfiliado";
 import Registrarme from "./screens/Registrarme";
@@ -95,7 +99,7 @@ export default class App extends Component {
               onMouseLeave={mouseLeaveLink}>
               {showAfilBoard && (
                 <li className="nav-item">
-                  <Link style={styles.navLink} to={"/Dashboard"}>
+                  <Link style={styles.navLink} to={"/Dashboard/"+ idclient()}>
                     Dashboard
                   </Link>
                 </li>
@@ -197,7 +201,9 @@ export default class App extends Component {
             <Route path="/registro" element={<Registrarme />} />
             <Route path="/registro_afiliado" element={<RegistrarmeaAfiliado />} />
             <Route path={"/Miperfil/" + idclient()} element={<MiPerfil />} />
-            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path={"/Dashboard/" + idclient()} element={<Dashboard />} />
+            <Route path={"/Dashboard/" + idclient()+"/AgregarTransporte/"} element={<AgregarTransporte />} />
+            <Route path={"/Dashboard/" + idclient()+"/QuitarServicio/"} element={<QuitarServicio />} />
             <Route path="/AdquirirPaquete" element={<AdquirirPaquete />} />
           </Routes>
         </main>
