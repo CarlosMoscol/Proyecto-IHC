@@ -15,7 +15,7 @@ function ContentSelection(props) {
 }
 
 export default function AuthUser() {
-  const [option, setoption] = useState("iniciarSesion");
+  const [option] = useState("iniciarSesion");
   const navigate = useNavigate();
 
   function registroPage() {

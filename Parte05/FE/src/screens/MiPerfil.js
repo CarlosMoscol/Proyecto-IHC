@@ -37,7 +37,7 @@ export default function Dashboard() {
                 </div>
                 <div>Yo</div>
               </li>
-              {client.type=="turista" ? (
+              {client.type==="turista" ? (
                 <li
                   onMouseOver={over}
                   onMouseLeave={leave}

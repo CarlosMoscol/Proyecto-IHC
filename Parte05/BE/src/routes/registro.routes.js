@@ -5,7 +5,8 @@ const {
     createRegistro,
     deleteRegistro,
     updateRegistro,
-    createRegistroAfil
+    createRegistroAfil,
+    getAfil
 } = require ('../controllers/registro.controller')
 
 const {
@@ -37,6 +38,7 @@ const router = Router();
 
 router.get('/Registro', getAllRegistro)
 router.get('/Registro/:idclient', getRegistro)
+router.get('/Registro/afil/:idclient', getAfil)
 router.post('/Registro', userAuth.saveUser, createRegistro)
 router.post('/Registro/afil', createRegistroAfil)
 
@@ -52,7 +54,7 @@ router.put('/Registro/:idclient', updateRegistro)
  */
 
 router.get('/Transporte', getAllTransporte)
-router.get('/Transporte/:idtransport', getTransporte)
+router.get('/Transporte/:idaffiliate', getTransporte)
 router.post('/Transporte', createTransporte)
 router.delete('/Transporte/:idtransport', deleteTransporte)
 router.put('/Transporte/:idtransport', updateTransporte)
@@ -68,7 +70,7 @@ router.put('/Transporte/:idtransport', updateTransporte)
  */
 
 router.get('/Alojamiento', getAllAlojamiento)
-router.get('/Alojamiento/:idaccommodation', getAlojamiento)
+router.get('/Alojamiento/:idaffiliate', getAlojamiento)
 router.post('/Alojamiento', createAlojamiento)
 router.delete('/Alojamiento/:idtransport', deleteAlojamiento)
 router.put('/Alojamiento/:idaccommodation', updateAlojamiento)

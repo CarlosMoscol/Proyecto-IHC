@@ -9,7 +9,7 @@ export default function MisDatos() {
   const client = AuthService.getCurrentUser();
   function imagenPerfil() {
     let src;
-    if (client.type == 'turista') {
+    if (client.type === 'turista') {
       src = imageTurist;
 
     } else {
@@ -46,7 +46,7 @@ export default function MisDatos() {
           </ul>
         </div>
       </div>
-      {client.type == "turista" ? (
+      {client.type === "turista" ? (
         <div className="row">
           <Title title="Mis viajes" />
           mi viajes

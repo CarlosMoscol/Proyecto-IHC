@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
-import MiPerfil from "../components/dashboard/MiPerfil";
+import MiPerfil from "../components/dashboard/MiPerfil.Dashboard";
 import AgregarServicio from "../components/dashboard/AgregarServicio";
 import AdministrarEstado from "../components/dashboard/AdministrarEstado";
-import QuitarServicio from "../components/dashboard/QuitarServicio";
-import AdministrarCliente from "../components/dashboard/AdministrarClientes";
-import AdminstrarPromociones from "../components/dashboard/AdminstrarPromociones";
+import AdministrarPaquetes from '../components/dashboard/AdministrarPaquetes'
 
 function SelecOption(props) {
   const { option } = props;
@@ -13,17 +11,12 @@ function SelecOption(props) {
   switch (option) {
     case "MiPerfil":
       return <MiPerfil />;
-
     case "AdministrarEstado":
       return <AdministrarEstado />;
     case "AgregarServicio":
       return <AgregarServicio />;
-    case "QuitarServicio":
-      return <QuitarServicio />;
-    case "AdministrarClientes":
-      return <AdministrarCliente />;
-    case "AdminstrarPromociones":
-      return <AdminstrarPromociones />;
+    case "AdministrarPaquetes":
+      return <AdministrarPaquetes />;
     default:
       return <AdministrarEstado />;
   }
@@ -55,7 +48,7 @@ export default function Dashboard() {
                 onClick={() => setoption("AdministrarEstado")}
                 style={styles.itemList}
               >
-                Administrar estado
+                Administrar servicios
               </li>
               <li
                 onMouseOver={over}
@@ -68,26 +61,10 @@ export default function Dashboard() {
               <li
                 onMouseOver={over}
                 onMouseLeave={leave}
-                onClick={() => setoption("QuitarServicio")}
+                onClick={() => setoption("AdministrarPaquetes")}
                 style={styles.itemList}
               >
-                Quitar servicio
-              </li>
-              <li
-                onMouseOver={over}
-                onMouseLeave={leave}
-                onClick={() => setoption("AdministrarClientes")}
-                style={styles.itemList}
-              >
-                Administrar clientes
-              </li>
-              <li
-                onMouseOver={over}
-                onMouseLeave={leave}
-                onClick={() => setoption("AdminstrarPromociones")}
-                style={styles.itemList}
-              >
-                Adminstrar promociones
+                Administrar paquetes
               </li>
             </ul>
           </div>

@@ -19,11 +19,11 @@ export default function MiPerfil() {
         </div>
         <div className="col-8">
           <div>
-            <h5>{client.type} Independiente</h5>
+            <h5>Afiliado Independiente</h5>
           </div>
           <ul>
             <li>Nombre: {client.name}</li>
-            <li>Oficio: Transportista</li>
+            <li>Oficio: Alojamiento y Transporte</li>
             <li>
               Calificación: 4.5 <i className="material-icons">star</i>
             </li>

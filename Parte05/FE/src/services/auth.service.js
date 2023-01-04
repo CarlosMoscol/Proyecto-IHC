@@ -1,6 +1,8 @@
 class AuthService {
   logout() {
     localStorage.removeItem("client");
+    localStorage.removeItem("alojamiento");
+    localStorage.removeItem("transporte");
   }
 
   getCurrentUser() {

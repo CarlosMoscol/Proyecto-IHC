@@ -13,6 +13,26 @@ const getAllRegistro = async (req, res, next) => {
     }
 };
 
+const getAfil = async (req, res, next) => {
+    try {
+        const { idclient } = req.params
+
+        const result = await pool.query('SELECT * FROM affiliates WHERE idclient = $1', [idclient])
+
+        if (result.rows.length === 0)
+            return res.status(404).json({
+                message: 'Afiliado no encontrada'
+            })
+
+        res.json(result.rows[0]);
+
+        return result
+
+    } catch (error) {
+        next(error)
+    }
+};
+
 const getRegistro = async (req, res, next) => {
     try {
         const { idclient } = req.params
@@ -21,7 +41,7 @@ const getRegistro = async (req, res, next) => {
 
         if (result.rows.length === 0)
             return res.status(404).json({
-                message: 'Tarea no encontrada'
+                message: 'Registro no encontrada'
             })
 
         res.json(result.rows[0]);
@@ -35,10 +55,12 @@ const getRegistro = async (req, res, next) => {
 
 const createRegistro = async (req, res, next) => {
     const { name, email, password, type } = req.body
-    const data = {
-        password: await bcrypt.hash(password, 10),
-      };
+    
     try {
+        const data = {
+            password: await bcrypt.hash(password, 10),
+          };
+
         const result = await pool.query('INSERT INTO clients (name, email, password, type) VALUES ($1, $2, $3, $4) RETURNING *', [
             name,
             email,
@@ -154,5 +176,6 @@ module.exports = {
     createRegistro,
     createRegistroAfil,
     deleteRegistro,
-    updateRegistro
+    updateRegistro,
+    getAfil
 }

@@ -36,7 +36,7 @@ function FormLogin() {
       const API_URL = "/Miperfil/";
       const client = AuthService.getCurrentUser();
 
-      if (client.type == "turista") {
+      if (client.type === "turista") {
         navigate(API_URL + JSON.stringify(client.idclient))
       } else {
         navigate("/Dashboard/" + JSON.stringify(client.idclient))

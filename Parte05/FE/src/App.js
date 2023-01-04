@@ -6,9 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import Paquetes from "./screens/Paquetes";
 import Personalizar from "./screens/Personalizar";
-import Navigation from "./components/Navigation";
 import AuthUser from "./screens/AuthUser";
-import AuthUser_login from "./screens/AuthUser_Login";
+import Login from "./screens/Login";
 import MiPerfil from "./screens/MiPerfil";
 import Dashboard from "./screens/Dashboard";
 import AdquirirPaquete from "./screens/AdquirirPaquete";
@@ -16,15 +15,10 @@ import AdquirirPaquete from "./screens/AdquirirPaquete";
 import AgregarTransporte from "./components/dashboard/AgregarTransporte";
 import QuitarServicio from "./components/dashboard/QuitarServicio";
 
-
 import Footer from "./components/Footer";
 import RegistrarmeaAfiliado from "./screens/RegistrarmeaAfiliado";
 import Registrarme from "./screens/Registrarme";
 import { Link } from "react-router-dom";
-import {
-  useState,
-  useEffect
-} from 'react';
 
 import AuthService from "./services/auth.service";
 import EventBus from "./common/EventBus";
@@ -197,7 +191,7 @@ export default class App extends Component {
             <Route path="/Paquetes" element={<Paquetes />} />
             <Route path="/Personalizar" element={<Personalizar />} />
             <Route path="/AuthUser" element={<AuthUser />} />
-            <Route path="/login" element={<AuthUser_login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registrarme />} />
             <Route path="/registro_afiliado" element={<RegistrarmeaAfiliado />} />
             <Route path={"/Miperfil/" + idclient()} element={<MiPerfil />} />
