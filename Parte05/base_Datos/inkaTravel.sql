@@ -43,22 +43,13 @@ CREATE TABLE accommodations(
 	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (idAccommodation)
 );
-CREATE TABLE touristPlaces(
-	idTouristPlace UUID DEFAULT gen_random_uuid(),
-	nameTouristPlace VARCHAR(100),
-	price INT,
-	ubication VARCHAR(100),
-	urlImageTouristPlace TEXT,
-	description TEXT,
-	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON UPDATE CASCADE ON DELETE CASCADE,
-	PRIMARY KEY (idTouristPlace)
-);
+
 CREATE TABLE travelPackages(
 	idTravelPackage UUID DEFAULT gen_random_uuid(),
 	arrayTouristPlaces JSON,
 	arrayAccommodations JSON,
 	arrayTransports TEXT,
-	belong VARCHAR(20),
+	ubication VARCHAR(20),
 	price INT,
 	type VARCHAR(50),
 	calification INT,
@@ -86,6 +77,8 @@ select * from accommodations
 select * from touristPlaces
 select * from buys
 select * from travelPackages
+
+--SELECT * FROM transports WHERE idaffiliate = 'eecb9eea-f6bf-40ed-a248-cd9773fa4818'
 --
 --Ejemplo de query para insertar datos de una tabla a otra:
 --INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)
@@ -115,6 +108,8 @@ select * from travelPackages
 --ALTER TABLE travelPackages ALTER COLUMN idTravelPackage SET DEFAULT gen_random_uuid();
 --
 --
+--ALTER TABLE travelPackages DROP COLUMN arrayTouristPlaces
+--ALTER TABLE travelPackages RENAME COLUMN belong TO ubication
 --Testeo previo:
 --borrar tablas:
 --drop table clients CASCADE;
