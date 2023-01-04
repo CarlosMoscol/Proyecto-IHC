@@ -15,7 +15,7 @@ export default function AgregarAlojamiento() {
         document.getElementById("miForm2").reset();
     }
 
-    const [transport, setTransport] = useState({
+    const [accommodation, setAccommodation] = useState({
 
         nameaccommodation: "",
         price: "",
@@ -36,7 +36,7 @@ export default function AgregarAlojamiento() {
         try {
             const res = await fetch('http://localhost:4000/Alojamiento', {
                 method: 'POST',
-                body: JSON.stringify(transport),
+                body: JSON.stringify(accommodation),
                 headers: { "Content-Type": "application/json" }
             })
             const dataA = await res.json();
@@ -53,7 +53,7 @@ export default function AgregarAlojamiento() {
     }
 
     const handleChange = e => {
-        setTransport({ ...transport, [e.target.name]: e.target.value });
+        setAccommodation({ ...accommodation, [e.target.name]: e.target.value });
     }
 
     return (
@@ -154,7 +154,7 @@ export default function AgregarAlojamiento() {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary w-100" disabled={!transport.nameaccommodation || !transport.price || !transport.ubication || !transport.capacity || !transport.urlimageaccommodation || !transport.description}>
+                <button type="submit" className="btn btn-primary w-100" disabled={!accommodation.nameaccommodation || !accommodation.price || !accommodation.ubication || !accommodation.capacity || !accommodation.urlimageaccommodation || !accommodation.description}>
                     {loading ? (<CircularProgress color="inherit" size={24} />
                     ) : (
                         'Registrar Alojamiento'

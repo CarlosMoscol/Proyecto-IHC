@@ -5,6 +5,7 @@ const sequelize = require('sequelize')
 const dotenv = require('dotenv').config()
 const cookieParser = require('cookie-parser')
 const db = require('./models')
+const bodyParser = require("body-parser");
 
 
 
@@ -19,6 +20,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(bodyParser.json());
 
 //synchronizing the database and forcing it to false so we dont lose data
 db.sequelize.sync({ force: false }).then(() => {

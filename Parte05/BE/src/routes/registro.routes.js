@@ -14,7 +14,8 @@ const {
     deleteTransporte,
     getAllTransporte,
     getTransporte,
-    updateTransporte
+    updateTransporte,
+    getOneTransport
 } = require ( '../controllers/transport.controller' )
 
 const {
@@ -22,8 +23,13 @@ const {
     deleteAlojamiento,
     getAllAlojamiento,
     getAlojamiento,
-    updateAlojamiento
+    updateAlojamiento,
+    getOneAlojamiento
 } = require ('../controllers/accommodation.controller')
+
+const {
+    createTravelPack
+} = require ('../controllers/travelPack.controller')
 
 const userController = require('../controllers/login.controller')
 const { signup, login } = userController
@@ -54,7 +60,8 @@ router.put('/Registro/:idclient', updateRegistro)
  */
 
 router.get('/Transporte', getAllTransporte)
-router.get('/Transporte/:idaffiliate', getTransporte)
+router.get('/Transporte/afil/:idaffiliate', getTransporte)
+router.get('/Transporte/:idtransport', getOneTransport)
 router.post('/Transporte', createTransporte)
 router.delete('/Transporte/:idtransport', deleteTransporte)
 router.put('/Transporte/:idtransport', updateTransporte)
@@ -70,12 +77,17 @@ router.put('/Transporte/:idtransport', updateTransporte)
  */
 
 router.get('/Alojamiento', getAllAlojamiento)
-router.get('/Alojamiento/:idaffiliate', getAlojamiento)
+router.get('/Alojamiento/afil/:idaffiliate', getAlojamiento)
+router.get('/Alojamiento/:idaccommodation', getOneAlojamiento)
 router.post('/Alojamiento', createAlojamiento)
-router.delete('/Alojamiento/:idtransport', deleteAlojamiento)
+router.delete('/Alojamiento/:idaccommodation', deleteAlojamiento)
 router.put('/Alojamiento/:idaccommodation', updateAlojamiento)
 
 
+/**
+ * Rutas de la API para los paquetes de viajes (CRUD)
+ */
 
+router.post('/TravelPack', createTravelPack)
 
 module.exports = router;

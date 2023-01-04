@@ -10,20 +10,22 @@ const getAllTransporte = async (req, res, next) => {
     }
 };
 
+const getOneTransport = async (req, res, next) => {
+    try {
+        const { idtransport } = req.params
+        const result = await pool.query('SELECT * FROM transports WHERE idtransport = $1', [idtransport])
+        res.json(result.rows);
+
+    } catch (error) {
+        next(error)
+    }
+};
+
 const getTransporte = async (req, res, next) => {
     try {
         const { idaffiliate } = req.params
-
         const result = await pool.query('SELECT * FROM transports WHERE idaffiliate = $1', [idaffiliate])
-
-        if (result.rows.length === 0)
-            return res.status(404).json({
-                message: 'Tarea no encontrada'
-            })
-
         res.json(result.rows);
-
-        return result
 
     } catch (error) {
         next(error)
@@ -103,5 +105,6 @@ module.exports = {
     getTransporte,
     createTransporte,
     deleteTransporte,
-    updateTransporte
+    updateTransporte,
+    getOneTransport,
 }

@@ -46,14 +46,12 @@ CREATE TABLE accommodations(
 
 CREATE TABLE travelPackages(
 	idTravelPackage UUID DEFAULT gen_random_uuid(),
-	arrayTouristPlaces JSON,
 	arrayAccommodations JSON,
-	arrayTransports TEXT,
+	arrayTransports JSON,
 	ubication VARCHAR(20),
 	price INT,
 	type VARCHAR(50),
-	calification INT,
-	description TEXT,
+	idAffiliate UUID REFERENCES affiliates(idAffiliate) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY(idTravelPackage)
 );
 CREATE TABLE buys(
@@ -78,7 +76,7 @@ select * from touristPlaces
 select * from buys
 select * from travelPackages
 
---SELECT * FROM transports WHERE idaffiliate = 'eecb9eea-f6bf-40ed-a248-cd9773fa4818'
+SELECT * FROM transports WHERE idaffiliate = '89f4f1af-ba90-4dfd-b827-f0860d329b03'
 --
 --Ejemplo de query para insertar datos de una tabla a otra:
 --INSERT INTO tourists (idclient) SELECT idclient FROM clients WHERE type='turista' AND idclient NOT IN (SELECT idclient FROM tourists)
@@ -93,8 +91,8 @@ select * from travelPackages
 --
 -- Modificar clave foranea para poder hacer un borrado en cascada desde la tabla cliente
 -----------------------------------
---ALTER TABLE affiliates ADD FOREIGN KEY(idclient)
---REFERENCES clients(idclient) on update cascade ON DELETE CASCADE;
+--ALTER TABLE buys ADD FOREIGN KEY(idTravelPackage)
+--REFERENCES travelPackages(idTravelPackage) on update cascade ON DELETE CASCADE;
 -----------------------------------
 -- Modificar primary key para que sea de tipo UUID:
 -- Alterando columna de idclient:
@@ -108,7 +106,7 @@ select * from travelPackages
 --ALTER TABLE travelPackages ALTER COLUMN idTravelPackage SET DEFAULT gen_random_uuid();
 --
 --
---ALTER TABLE travelPackages DROP COLUMN arrayTouristPlaces
+--ALTER TABLE travelPackages DROP COLUMN description
 --ALTER TABLE travelPackages RENAME COLUMN belong TO ubication
 --Testeo previo:
 --borrar tablas:

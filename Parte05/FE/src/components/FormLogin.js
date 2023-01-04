@@ -16,6 +16,7 @@ function FormLogin() {
   })
 
 
+
   const [loading, setloading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -35,6 +36,14 @@ function FormLogin() {
       setloading(false)
       const API_URL = "/Miperfil/";
       const client = AuthService.getCurrentUser();
+      
+      console.log(`http://localhost:4000/Registro/afil/${client.idclient}`)
+      const result = await fetch(`http://localhost:4000/Registro/afil/${client.idclient}`, {
+        method: 'GET',
+      })
+      const dataAfil = await result.json();
+      console.log(dataAfil.idaffiliate)
+      localStorage.setItem("afiliado", dataAfil.idaffiliate);
 
       if (client.type === "turista") {
         navigate(API_URL + JSON.stringify(client.idclient))
@@ -42,6 +51,7 @@ function FormLogin() {
         navigate("/Dashboard/" + JSON.stringify(client.idclient))
       }
       window.location.reload()
+
     } catch (error) {
       window.location.reload()
     }

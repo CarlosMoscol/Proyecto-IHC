@@ -4,6 +4,7 @@ import MiPerfil from "../components/dashboard/MiPerfil.Dashboard";
 import AgregarServicio from "../components/dashboard/AgregarServicio";
 import AdministrarEstado from "../components/dashboard/AdministrarEstado";
 import AdministrarPaquetes from '../components/dashboard/AdministrarPaquetes'
+import AgregarPaquete from '../components/dashboard/AgregarPaquete'
 
 function SelecOption(props) {
   const { option } = props;
@@ -17,6 +18,8 @@ function SelecOption(props) {
       return <AgregarServicio />;
     case "AdministrarPaquetes":
       return <AdministrarPaquetes />;
+    case "AgregarPaquete":
+      return <AgregarPaquete />;
     default:
       return <AdministrarEstado />;
   }
@@ -65,6 +68,14 @@ export default function Dashboard() {
                 style={styles.itemList}
               >
                 Administrar paquetes
+              </li>
+              <li
+                onMouseOver={over}
+                onMouseLeave={leave}
+                onClick={() => setoption("AgregarPaquete")}
+                style={styles.itemList}
+              >
+                Agregar Paquete turístico
               </li>
             </ul>
           </div>

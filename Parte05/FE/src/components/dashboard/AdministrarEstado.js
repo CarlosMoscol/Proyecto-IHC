@@ -2,43 +2,42 @@ import React from "react";
 import Title from "../Title";
 import { useEffect, useState } from 'react'
 import { Box, Button, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
-import AuthService from "../../services/auth.service";
-
 
 export default function AdministrarEstado() {
 
+  const idstr = localStorage.getItem('afiliado')
+  console.log(idstr)
 
-  const client = AuthService.getCurrentUser();
-  const idclient = client.idclient;
+  const url1 = "http://localhost:4000/Alojamiento/afil/"
+  const url2 = "http://localhost:4000/transporte/afil/"
 
-  const [affiliates, SetAfil] = useState({
-    idaffiliate: '',
-    idclient: '',
-    ruc: '',
-  })
+  console.log(url1 + idstr)
 
-  const loadIdAfiliate = async () => {
-    const res = await fetch(`http://localhost:4000/Registro/afil/${idclient}`)
-    const dataAfil = await res.json();
-    console.log(dataAfil)
-    SetAfil(dataAfil)
-  }
+  console.log(url2 + idstr)
 
-  const idafiliado = affiliates.idaffiliate
 
   const [transports, setTransports] = useState([])
+  const [accommodations, setAccommodations] = useState([])
 
   const loadTransport = async () => {
+    const res = await fetch(url2 + idstr);
+    const dataT_2 = await res.json();
+    console.log(dataT_2)
+    setTransports(dataT_2)
+    localStorage.setItem("transporte", JSON.stringify(dataT_2));
+  }
+
+  
+
+  const loadAccommodations = async () => {
     try {
-      const res = await fetch(`http://localhost:4000/transporte`, {
-        method: "GET",
-      });
-      const dataT_2 = await res.json();
-      console.log(dataT_2)
-      setTransports(dataT_2)
-      localStorage.setItem("transporte", JSON.stringify(dataT_2));
-    } catch (error) {
-      console.error(error);
+      const res = await fetch(url1 + idstr);
+      const dataA_2 = await res.json();
+      console.log(dataA_2)
+      setAccommodations(dataA_2)
+      localStorage.setItem("alojamiento", JSON.stringify(dataA_2));
+    } catch (error2) {
+      console.error(error2);
     }
   }
 
@@ -48,26 +47,11 @@ export default function AdministrarEstado() {
         method: "DELETE",
       });
       setTransports(transports.filter((transport) => transport.idtransport !== idtransport));
+      window.location.reload()
     } catch (error) {
       console.error(error);
     }
   };
-
-  const [accommodations, setAccommodations] = useState([])
-
-  const loadAccommodations = async () => {
-    try {
-      const res = await fetch(`http://localhost:4000/Alojamiento/`, {
-        method: "GET",
-      });
-      const dataA_2 = await res.json();
-      console.log(dataA_2)
-      setAccommodations(dataA_2)
-      localStorage.setItem("transporte", JSON.stringify(dataA_2));
-    } catch (error2) {
-      console.error(error2);
-    }
-  }
 
   const handleDelete2 = async (idaccommodation) => {
     try {
@@ -75,20 +59,18 @@ export default function AdministrarEstado() {
         method: "DELETE",
       });
       setAccommodations(accommodations.filter((accommodation) => accommodation.idaccommodation !== idaccommodation));
+      window.location.reload()
     } catch (error) {
       console.error(error);
     }
   };
 
-  function loadersAll() {
-    loadIdAfiliate()
-    loadTransport()
-    loadAccommodations()
-  }
 
   useEffect(() => {
-    loadersAll()
+    loadTransport()
+    loadAccommodations()
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -204,6 +186,6 @@ export default function AdministrarEstado() {
           }
         </div>
       </div>
-      </>
+    </>
   );
 }

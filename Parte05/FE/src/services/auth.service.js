@@ -3,6 +3,7 @@ class AuthService {
     localStorage.removeItem("client");
     localStorage.removeItem("alojamiento");
     localStorage.removeItem("transporte");
+    localStorage.removeItem("afiliado");
   }
 
   getCurrentUser() {
