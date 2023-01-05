@@ -1,13 +1,26 @@
+import { Button } from "@material-ui/core";
 import maletaIcon from "../source/image/icons/flat-ui_trip-bag.svg";
 import miUbicacionIcon from "../source/image/icons/logos_google-maps.svg";
 import BtnBuscar from "./Btn";
 import Title from "./Title";
+import { useNavigate } from 'react-router-dom';
 
 export default function Buscar() {
+  const navigate = useNavigate();
   return (
     <div style={styles.contentFormBuscar}>
       <Title title="Encuentra la mejor opción para tu viaje." />
-      <form className="container-fluid" style={styles.formBuscar}>
+      <div>
+        <Button
+        variant="contained"
+        size="large"
+        color="primary"
+        onClick={() => navigate("/login")}>
+          Empecemos
+        </Button>
+      </div>
+
+      {/*<form className="container-fluid" style={styles.formBuscar}>
         <div className="row p-3">
           <div className="col-md">
             <label>
@@ -61,7 +74,7 @@ export default function Buscar() {
             <BtnBuscar name="Buscar" />
           </div>
         </div>
-      </form>
+      </form>*/}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import AdministrarEstado from "../components/dashboard/AdministrarEstado";
 import AdministrarPaquetes from '../components/dashboard/AdministrarPaquetes'
 import AgregarPaquete from '../components/dashboard/AgregarPaquete'
 
+
 function SelecOption(props) {
   const { option } = props;
 
@@ -45,6 +46,7 @@ export default function Dashboard() {
                 </div>
                 <div>Mi Perfil</div>
               </li>
+
               <li
                 onMouseOver={over}
                 onMouseLeave={leave}
@@ -60,22 +62,6 @@ export default function Dashboard() {
                 style={styles.itemList}
               >
                 Agregar servicio
-              </li>
-              <li
-                onMouseOver={over}
-                onMouseLeave={leave}
-                onClick={() => setoption("AdministrarPaquetes")}
-                style={styles.itemList}
-              >
-                Administrar paquetes
-              </li>
-              <li
-                onMouseOver={over}
-                onMouseLeave={leave}
-                onClick={() => setoption("AgregarPaquete")}
-                style={styles.itemList}
-              >
-                Agregar Paquete turístico
               </li>
             </ul>
           </div>
